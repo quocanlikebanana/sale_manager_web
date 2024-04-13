@@ -1,0 +1,7 @@
+SELECT MAX(id) FROM your_table;
+SELECT nextval('your_table_id_seq');
+
+BEGIN;
+LOCK TABLE your_table IN EXCLUSIVE MODE;
+SELECT setval('your_table_id_seq', COALESCE((SELECT MAX(id)+1 FROM your_table), 1), false);
+COMMIT;

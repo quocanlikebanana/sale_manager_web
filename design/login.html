@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <!-- Font awesome CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body class="bg-body-secondary"
+      data-bs-theme="dark">
+    <div class="container-fluid my-auto py-5 d-flex justify-content-center align-items-center"
+         style="height: 100vh;">
+        <div class="col-7 col-md-6 col-lg-5 col-xl-4  bg-body-tertiary d-flex justify-content-center align-items-center g-0 rounded rounded-3 py-2 px-3"
+             style="box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.5); opacity: 80%;">
+            <form action="/login"
+                  method="post"
+                  class="container">
+                <div class="row text-center mt-5 mb-4">
+                    <h3>Login</h3>
+                    <div class="form-check form-switch form-check-reverse">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               role="switch"
+                               id="darkModeSwitch">
+                        <label class="form-check-label"
+                               for="darkModeSwitch"><i class="fa fa-moon"></i></label>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="form-label"
+                           for="usernameInput">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input type="text"
+                               class="form-control"
+                               id="usernameInput"
+                               name="username"
+                               placeholder="Username">
+                    </div>
+                    <!-- <div class="form-text text-danger"
+                         id="basic-addon4">Example help text goes outside the input group.</div> -->
+                </div>
+                <div class="row mb-3">
+                    <label class="form-label"
+                           for="passwordInput">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-key"></i>
+                        </span>
+                        <input type="text"
+                               class="form-control"
+                               id="passwordInput"
+                               name="password"
+                               placeholder="Password">
+                    </div>
+                    <!-- <div class="form-text text-danger"
+                         id="basic-addon4">Example help text goes outside the input group.</div> -->
+                </div>
+                <div class="row mb-3 px-3">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="agreementCheck"
+                               name="confirm">
+                        <label class="form-check-label"
+                               for="agreementCheck">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+                <div class="row mt-5 mb-4 gx-2">
+                    <div class="col-6">
+                        <button type="submit"
+                                class="btn btn-outline-primary px-4 py-2 w-100">Login
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button"
+                                class="btn btn-primary px-4 py-2 w-100">Sign Up
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Jquery JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script>
+        const serverDir = 'localhost:3000';
+        $(() => {
+
+        });
+        $('darkModeSwitch').on('change', async function () {
+            await fetch(serverDir + '/settings/darkmode', {
+                method: 'POST',
+                body: this.val(),
+            });
+        });
+    </script>
+</body>
+
+</html>

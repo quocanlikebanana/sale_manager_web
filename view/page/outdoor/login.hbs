@@ -1,0 +1,100 @@
+<form action="/login"
+	method="post"
+	id="loginForm"></form>
+<form action="/signup"
+	method="get"
+	id="signupForm"></form>
+<form action="/api/google"
+	method="get"
+	id="googleLoginForm"></form>
+
+<div
+	class="col-7 col-md-6 col-lg-5 col-xl-4 bg-body-tertiary d-flex justify-content-center align-items-center g-0 rounded rounded-3 py-2 px-3"
+	style="box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.5); opacity: 80%;">
+	<div class="container">
+		<div class="row text-center mt-5 mb-4">
+			<h3>Login</h3>
+			<div class="form-check form-switch form-check-reverse">
+				<input class="form-check-input"
+					type="checkbox"
+					role="switch"
+					{{#if
+					dark}}checked{{/if}}
+					id="darkModeSwitch">
+				<label class="form-check-label"
+					for="darkModeSwitch">
+					<i class="{{#if dark}}fa fa-moon{{else}}fa fa-sun{{/if}}"></i></label>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label class="form-label"
+				for="usernameInput">Username</label>
+			<div class="input-group">
+				<span class="input-group-text">
+					<i class="fa-solid fa-user"></i>
+				</span>
+				<input type="text"
+					class="form-control"
+					id="usernameInput"
+					name="username"
+					placeholder="Username"
+					form="loginForm" />
+			</div>
+			{{#if usernameError}}
+			<div class="form-text text-danger"
+				id="basic-addon4">{{usernameError}}</div>
+			{{/if}}
+		</div>
+		<div class="row mb-3">
+			<label class="form-label"
+				for="passwordInput">Password</label>
+			<div class="input-group">
+				<span class="input-group-text">
+					<i class="fa-solid fa-key"></i>
+				</span>
+				<input type="text"
+					class="form-control"
+					id="passwordInput"
+					name="password"
+					placeholder="Password"
+					form="loginForm">
+			</div>
+			{{#if passwordError}}
+			<div class="form-text text-danger"
+				id="basic-addon4">{{passwordError}}</div>
+			{{/if}}
+		</div>
+		<div class="row mb-3 px-3">
+			<div class="form-check">
+				<input class="form-check-input"
+					type="checkbox"
+					id="rememberCheck"
+					name="rememberme"
+					form="loginForm">
+				<label class="form-check-label"
+					for="rememberCheck">
+					Remember me
+				</label>
+			</div>
+		</div>
+		<div class="row mt-5 mb-4 gx-2">
+			<button type="submit"
+				form="googleLoginForm"
+				class="btn btn-danger px-4 py-2 w-100">Log in with Google</button>
+		</div>
+		<div class="row mt-3 mb-4 gx-2">
+			<div class="col-6">
+				<button type="submit"
+					class="btn btn-outline-primary px-4 py-2 w-100"
+					form="loginForm">Login
+				</button>
+			</div>
+			<div class="col-6">
+				<button type="submit"
+					class="btn btn-primary px-4 py-2 w-100"
+					form="signupForm">Sign Up
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

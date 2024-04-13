@@ -1,0 +1,72 @@
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="row">
+
+        <!-- New Message -->
+        <div class="col col-3">
+            <div class="card h-100">
+                <!-- When read -->
+                {{#if readMode}}
+                <button type="button"
+                    class="btn btn-success px-3 py-2"
+                    id="newMessageBtn">New Message</button>
+                {{else}}
+                <button type="button"
+                    class="btn btn-warning px-3 py-2"
+                    id="sendMessageBtn">Send Message</button>
+                <button type="button"
+                    class="btn btn-outline-danger px-3 py-2"
+                    id="cancelMessageBtn">Cancel</button>
+                {{/if}}
+            </div>
+        </div>
+
+        <!-- Message from or Write message to -->
+        <div class="col col-9">
+            <div class="card h-100">
+                {{#if readMode}}
+                <p class="fw-semibold">
+                    Message From:
+                    <span id="senderText"></span>
+                </p>
+                {{else}}
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="receiverTB"
+                            class="col-form-label">Receiver: </label>
+                    </div>
+                    <div class="col">
+                        <input type="text"
+                            id="receiverTB"
+                            class="form-control"
+                            aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="row">
+        <!-- Conversation card -->
+        <div class="col col-md-3">
+            <div class="card h-100 d-flex flex-column"
+                id="inboxCont">
+                {{!-- JQuery handle this --}}
+            </div>
+        </div>
+
+        <!-- Message container -->
+        <div class="col col-md-9">
+            <div class="card h-100">
+                <!-- When write -->
+                <textarea class="form-control"
+                    id="messageTB"
+                    {{#if readMode}}readonly{{/if}}
+                    rows="15"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

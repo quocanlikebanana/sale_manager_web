@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <!-- Font awesome CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+    <style>
+        .hover-zoom-detail {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            height: 250px;
+            min-height: 250px;
+            z-index: 1;
+            transition: all 0.5s ease 0s;
+        }
+
+        .hover-zoom-detail>img {
+            min-height: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-bottom: auto;
+            z-index: 1;
+            transition: all 0.5s ease 0s;
+        }
+
+        .hover-zoom-detail>p {
+            position: absolute;
+            display: block;
+            text-align: center;
+            width: 100%;
+            bottom: 2%;
+            margin: 0;
+        }
+
+        .hover-zoom-detail:hover {
+            transform: scale(1.2, 1.3);
+            z-index: 2;
+        }
+
+        .hover-zoom-detail:hover>img {
+            transform: scaleY(0.9) translateY(-10%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="carouselExample"
+                 class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://fronty.com/static/uploads/code_tester.png"
+                             class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://cdn.pixabay.com/photo/2018/02/22/17/27/programming-3173456_640.png"
+                             class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.freecodecamp.org/news/content/images/2021/08/html.png"
+                             class="d-block w-100">
+                    </div>
+                </div>
+                <button class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                          aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"
+                          aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <p>Our Products:</p>
+        <div class="row">
+            <div id="{{myId}}"
+                 class="carousel slide carousel-fade container-fluid my-3 carousel-dark">
+                <div class="carousel-indicators">
+                    <!-- <template v-for="(slides, n) in dataSlides()"> -->
+                    <!-- <button type="button"
+                                data-bs-target="{{myId}}"
+                                data-bs-slide-to="{{n}}"
+                                class="{{active: n === 0}}"
+                                aria-current="{{n === 0}}"
+                                aria-label="{{Slide + (n + 1)}}"></button> -->
+                    <button type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="Slide 1"></button>
+                    <button type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    <button type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner overflow-visible">
+                    <!-- <template v-for="(slides, n) in dataSlides()"> -->
+                    <div class="carousel-item active"
+                         data-bs-interval="3000">
+                        <div class="container-fluid">
+                            <div class="row row-cols-3 g-2">
+                                <!-- <template v-for="slide in slides"> -->
+                                <div class="col">
+                                    <div class="hover-zoom-detail bg-secondary text-dark"
+                                         style="cursor: pointer;">
+                                        <!-- @click="$emit('requestDetailMovie', slide.id)" -->
+                                        <img src="https://fronty.com/static/uploads/code_tester.png"
+                                             class="img-fluid">
+                                        <p>{{slide.title}}&nbsp&nbsp<span>({{slide.year}})</span></p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="hover-zoom-detail bg-secondary text-dark"
+                                         style="cursor: pointer;">
+                                        <!-- @click="$emit('requestDetailMovie', slide.id)" -->
+                                        <img src="https://fronty.com/static/uploads/code_tester.png"
+                                             class="img-fluid">
+                                        <p>{{slide.title}}&nbsp&nbsp<span>({{slide.year}})</span></p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="hover-zoom-detail bg-secondary text-dark"
+                                         style="cursor: pointer;">
+                                        <!-- @click="$emit('requestDetailMovie', slide.id)" -->
+                                        <img src="https://fronty.com/static/uploads/code_tester.png"
+                                             class="img-fluid">
+                                        <p>{{slide.title}}&nbsp&nbsp<span>({{slide.year}})</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev"
+                        type="button"
+                        :data-bs-target="'#' + myId"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                          aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next"
+                        type="button"
+                        :data-bs-target="'#' + myId"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"
+                          aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

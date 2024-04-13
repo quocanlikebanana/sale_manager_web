@@ -1,0 +1,109 @@
+<form action="/home/filter-category" id="filterForm" method="post"></form>
+
+<div class="container-fluid bg-body-secondary">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="my-3 bg-body p-4 rounded-3 d-flex">
+                {{!-- Search --}}
+                <input id="js-searchProductTB"
+                    type="text"
+                    value="{{searchText}}"
+                    placeholder="Search"
+                    class="form-control">
+                <button id="js-searchProductBTN"
+                    type="button"
+                    class="btn btn-primary ms-2">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <div class="my-3 bg-body p-4 rounded-3">
+                <h4 class="mb-4">Category</h4>
+                <div class="row row-cols-auto row-cols-md-1">
+                    {{!-- Category filter --}}
+                    {{#each categories}}
+                    <div class="form-check col">
+                        {{!-- Group input in a form
+                        https://stackoverflow.com/questions/57823069/is-there-a-way-to-post-a-group-of-form-input-fields-as-an-object-array
+                        --}}
+                        <input class="form-check-input js-categoryCBs"
+                            type="checkbox"
+                            form="filterForm"
+                            name="checkedCategoryArray[]"
+                            value="{{CatID}}"
+                            {{#if (include CatID ../choosenCategory)
+                            }}checked{{/if}}
+                            id="cb-{{CatID}}">
+                        <label class="form-check-label"
+                            for="cb-{{CatID}}">
+                            {{CatName}}
+                        </label>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="my-3 p-4 bg-body rounded-3">
+                {{!-- Pagination --}}
+                <ul
+                    class="pagination justify-content-end align-items-center m-0">
+                    <li class="page-item">
+                        <a id="js-prevPage"
+                            class="page-link"
+                            href="/"
+                            aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{#loop 1 totalPage}}
+                    <li
+                        class="page-item {{#ifEqual this ../pageNum}}active{{/ifEqual}}">
+                        <a class="page-link pageNav"
+                            data-id="{{this}}"
+                            href="/">{{this}}</a>
+                    </li>
+                    {{/loop}}
+                    <li>
+                        <a id="js-nextPage"
+                            class="page-link"
+                            href="/"
+                            aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="my-3 p-4 bg-body rounded-3">
+                <div class="row row-cols-md-3 row-cols-2 g-3">
+                    {{!-- Product list --}}
+                    {{#each products}}
+                    <div class="col">
+                        <div class="card h-100 js-productDIVs"
+                            data-id="{{ProID}}">
+                            <div class="card-header">
+                                <img class="card-img"
+                                    src="{{toImageDir ProID}}">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="card-title">
+                                    {{ProName}}
+                                </h4>
+                                <p class="card-text">
+                                    {{TinyDes}}
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <small class="fs-6"> {{toCurrency Price}}
+                                    <i class="fa fa-cart-shopping"></i></small>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
